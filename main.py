@@ -169,7 +169,8 @@ Ensure the final result is in pure HTML format and follows all the above instruc
 @app.post("/ask-question/", response_model=AnswerResponse)
 def ask_question(input_data: QuestionInput, db: Session = Depends(db.get_db_connection)):
     try:
-        query_embedding = model.encode(...)(input_data.question).tolist()
+        model = get_model()
+        query_embedding = model.encode(input_data.question).tolist()
         # Search Pinecone
         search_result = index.query(
             vector=query_embedding,

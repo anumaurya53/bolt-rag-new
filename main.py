@@ -32,7 +32,7 @@ def get_model():
     global model
     if model is None:
         model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-    return model
+        return model
 app = FastAPI(
     title="RAG Document Intelligence",
     description="Bolt Junk Removal RAG",
